@@ -8,7 +8,7 @@ services:
     networks:
       my_network:
         ipv4_address: 192.168.46.4      
-  cliente:
+  cliente-firefox:
     image: kasmweb/firefox:1.14.0
     ports:
      - 6901:6901
@@ -18,7 +18,12 @@ services:
      - 192.168.46.4
     networks:
       my_network:
-
+  cliente:
+    build: cliente
+    dns:
+     - 192.168.46.4
+    networks:
+      my_network:    
       
 
 
