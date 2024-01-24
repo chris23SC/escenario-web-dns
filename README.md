@@ -10,5 +10,5 @@ Para finalizar:
 
 Para acceder https://localhost:6901
 
-usuario kasm-user
+usuario kasm_user
 password abc123.
