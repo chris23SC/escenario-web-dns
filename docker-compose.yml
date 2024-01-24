@@ -13,18 +13,12 @@ services:
     ports:
      - 6901:6901
     environment:
-      - VNC_PW=abc123.
+      - VNC_PW=abc123.  #Usuario kasm_user
     dns:
      - 192.168.46.4
     networks:
       my_network:
-  curl:
-    image: curlimages/curl
-    command: tail -f /dev/null
-    dns:
-     - 192.168.46.4
-    networks:
-      my_network:
+
       
 
 
