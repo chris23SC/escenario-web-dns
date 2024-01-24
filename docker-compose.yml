@@ -1,33 +1,33 @@
 version: '3'
 services:
-  web:
-    build: apache
-    ports:
-      - 8001:80
-    networks:
-      my_network:
-        ipv4_address: 192.168.46.5
   dns_server:
-    image: andyshinn/dnsmasq
+    build: dns
     command: --addn-hosts=/etc/custom_hosts
-    cap_add:
-      - NET_ADMIN
     volumes:
       - ./dns/lista.txt:/etc/custom_hosts:ro
     networks:
       my_network:
         ipv4_address: 192.168.46.4      
   cliente:
-    image: debian
+    image: kasmweb/firefox:1.14.0
+    ports:
+     - 6901:6901
+    environment:
+      - VNC_PW=abc123.
     dns:
      - 192.168.46.4
-    # volumes:
-    #   - ./start.sh:/start.sh:ro
-    # command: sh -c "/start.sh"
-    command: tail -f /dev/null
     networks:
       my_network:
-        ipv4_address: 192.168.46.3
+  curl:
+    image: curlimages/curl
+    command: tail -f /dev/null
+    dns:
+     - 192.168.46.4
+    networks:
+      my_network:
+      
+
+
 
 networks:
   my_network:
