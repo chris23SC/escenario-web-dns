@@ -11,17 +11,17 @@ services:
   cliente-firefox:
     image: kasmweb/firefox:1.14.0
     ports:
-     - 6901:6901
+    - 6901:6901
     environment:
       - VNC_PW=abc123.  #Usuario kasm_user
     dns:
-     - 192.168.46.4
+    - 192.168.46.4
     networks:
       my_network:
   cliente:
     build: cliente
     dns:
-     - 192.168.46.4
+    - 192.168.46.4
     networks:
       my_network:    
       
